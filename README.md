@@ -2,16 +2,16 @@
 
 MiniDB is a 7-day C++ learning project for building a tiny database engine from first principles.
 
-This branch is **Day 1**.
+This branch is **Day 2**.
 
-## Day 1 Goal
+## Day 2 Goal
 
-Learn how a database starts:
+Learn how a database stores structured records:
 
-- A command-line shell accepts user commands.
-- A database file is opened on disk.
-- Data written to the file still exists after restarting the program.
-- The difference between RAM and disk persistence becomes visible.
+- Rows are converted into bytes before going to disk.
+- Disk is split into fixed-size pages.
+- Each page stores many fixed-size row slots.
+- `insert` appends a student row that survives restart.
 
 ## Build
 
@@ -41,19 +41,16 @@ Direct-compile version:
 ## Try
 
 ```text
-MiniDB > .help
-MiniDB > write first persistent note
-MiniDB > write database file survives restart
-MiniDB > read
-MiniDB > .stats
+MiniDB > insert 101 Jungjeet
+MiniDB > insert 102 Rahul
+MiniDB > .rows
 MiniDB > .exit
 ```
 
-Run the program again with the same `students.db` file and type `read`. Your notes will still be there.
+Run the program again with the same `students.db` file and type `.rows`. Your students will still be there.
 
 ## Suggested Commit Message
 
 ```text
-Day 1: add CLI shell and persistent file I/O
+Day 2: store serialized rows in fixed-size pages
 ```
-
